@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Kasir Donat Modern - Menu</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container">
+        <a class="navbar-brand" href="#">Kasir Donat Modern</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/menu">Menu</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/cart">Keranjang</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1 class="text-center mt-5">Menu Donat</h1>
+    <div class="row justify-content-center mt-4">
+      <% if (menuItems.length > 0) { %>
+        <% menuItems.forEach((menuItem) => { %>
+          <div class="col-md-4">
+            <div class="card mb-4">
+                <img src="/images/<%= menuItem.image %>" class="card-img-top" alt="<%= menuItem.name %>">
+              <div class="card-body">
+                <h5 class="card-title"><%= menuItem.name %></h5>
+                <p class="card-text"><%= menuItem.description %></p>
+                <form action="/add-to-cart" method="get">
+                  <input type="hidden" name="menu_id" value="<%= menuItem.id %>">
+                  <div class="form-group">
+                    <label for="quantity">Quantity:</label>
+                    <div class="input-group">
+                      <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1" required>
+                      <div class="input-group-append">
+                        <button type="submit" class="btn btn-cart">
+                          <i class="fas fa-cart-plus"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      <% } %>
+    </div>
+    <div class="text-center">
+      <a href="/cart" class="btn btn-primary">Lihat Keranjang</a>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

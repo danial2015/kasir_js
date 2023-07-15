@@ -1,0 +1,120 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+  }
+
+  .navbar {
+    background-color: #ffffff;
+  }
+
+  .navbar-brand {
+    font-weight: bold;
+    color: #000000;
+  }
+
+  .nav-link {
+    color: #000000;
+  }
+
+  .hero {
+    background-image: url('/images/hero-background.jpg');
+    background-size: cover;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: black;
+  }
+
+  .hero-content {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  .hero p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  .btn-primary {
+    background-color: #000000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .btn-primary:hover {
+    background-color: #333333;
+  }
+
+  .section {
+    padding: 60px 0;
+    text-align: center;
+  }
+
+  .section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .card {
+    background-color: #ffffff;
+    border: none;
+    transition: all 0.3s;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .card-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+  }
+
+  .card-text {
+    margin-top: 10px;
+  }
+
+  .testimonials {
+    background-color: #ffffff;
+    padding: 60px 0;
+  }
+
+  .testimonial {
+    margin-bottom: 30px;
+  }
+
+  .testimonial-text {
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+
+  .testimonial-author {
+    font-weight: bold;
+  }
+  .navbar-brand {
+    background: none;
+    padding: 0;
+  }
+
+  .navbar-brand img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+  }
