@@ -3,7 +3,77 @@
 <head>
   <title>Website Kasir Donat Modern - Menu</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 </head>
+<style>
+    .navbar-brand {
+  font-weight: bold;
+  color: #000000;
+}
+.card {
+  border: none;
+}
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+}
+.card-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.card-text {
+  font-size: 16px;
+  color: #666;
+}
+.form-group {
+  margin-bottom: 0;
+}
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+.btn-cart {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  color: #007bff;
+  cursor: pointer;
+}
+.btn-cart:focus {
+  outline: none;
+}
+.btn-cart:hover {
+  color: #0069d9;
+}
+.btn-checkout {
+  background-color: #007bff;
+  border-color: #007bff;
+  font-size: 18px;
+  width: 200px;
+}
+.btn-checkout:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
+.text-center {
+  text-align: center;
+}
+
+</style>
 <body>
   <header>
     <nav class="navbar navbar-expand-lg">
@@ -33,7 +103,7 @@
         <% menuItems.forEach((menuItem) => { %>
           <div class="col-md-4">
             <div class="card mb-4">
-                <img src="/images/<%= menuItem.image %>" class="card-img-top" alt="<%= menuItem.name %>">
+            <img src="/images/<%= menuItem.image %>" class="card-img-top" alt="<%= menuItem.name %>">
               <div class="card-body">
                 <h5 class="card-title"><%= menuItem.name %></h5>
                 <p class="card-text"><%= menuItem.description %></p>
