@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Kasir Donat Modern - Riwayat Pemesanan</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Kasir Donat Modern</a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Beranda</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/menu">Menu</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/cart">Keranjang</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Riwayat Pemesanan</h1>
+    <form action="/riwayat_pemesanan" method="GET" class="mb-3">
+      <div class="form-row align-items-center">
+        <div class="col-auto">
+          <label for="dayFilter">Filter berdasarkan hari:</label>
+        </div>
+        <div class="col-auto">
+          <select name="day" id="dayFilter" class="form-control">
+            <option value="">Semua</option>
+            <option value="<%= today %>">Hari ini</option>
+            <option value="<%= yesterday %>">Kemarin</option>
+            <!-- Tambahkan pilihan hari lainnya sesuai kebutuhan -->
+          </select>
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary">Filter</button>
+        </div>
+      </div>
+    </form>
+    <% if (orders.length > 0) { %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>No. Pesanan</th>
+            <th>Tanggal Pemesanan</th>
+            <th>Nama Donat</th>
+            <th>Jumlah</th>
+            <th>Total</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% orders.forEach((order) => { %>
+            <tr>
+              <td><%= order.id %></td>
+              <td><%= order.order_date.toISOString().split('T')[0] %></td>
+              <td><%= order.menu_name %></td>
+              <td><%= order.quantity %></td>
+              <td><%= order.total %></td>
+              <td>
+                <form action="/cetak_struk" method="POST">
+                  <input type="hidden" name="order_id" value="<%= order.id %>">
+                  <button type="submit" class="btn btn-primary">Cetak Struk</button>
+                </form>
+              </td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    <% } else { %>
+      <p>Tidak ada riwayat pemesanan.</p>
+    <% } %>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

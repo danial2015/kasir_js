@@ -1,33 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Website Kasir Donat Modern - Keranjang</title>
+  <title>Keranjang</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg">
-      <div class="container">
-        <a class="navbar-brand" href="#">Kasir Donat Modern</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="/menu">Menu</a>
-            </li>
-            <li class="nav-item active">
-              <a class="nav-link" href="/cart">Keranjang</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Kasir Donat Modern</a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/menu">Menu</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/cart">Keranjang</a>
+        </li>
+      </ul>
     </nav>
   </header>
 
   <div class="container">
-    <h1 class="text-center mt-5">Keranjang</h1>
+    <h1 class="mt-5">Keranjang</h1>
     <% if (cartItems.length > 0) { %>
       <table class="table mt-4">
         <thead>
@@ -36,27 +29,31 @@
             <th scope="col">Nama</th>
             <th scope="col">Deskripsi</th>
             <th scope="col">Kuantitas</th>
+            <th scope="col">Aksi</th>
           </tr>
         </thead>
         <tbody>
-            <% cartItems.forEach((cartItem) => { %>
-              <tr>
-                <th scope="row"><%= cartItem.id %></th>
-                <td><%= cartItem.name %></td>
-                <td><%= cartItem.description %></td>
-                <td><%= cartItem.quantity %></td>
-                <td>
-                  <form action="/remove-from-cart" method="post">
-                    <input type="hidden" name="cart_id" value="<%= cartItem.id %>">
-                    <button type="submit" class="btn btn-danger">Remove</button>
-                  </form>
-                </td>
-              </tr>
-            <% }); %>
-          </tbody>
+          <% cartItems.forEach((cartItem) => { %>
+            <tr>
+              <td><%= cartItem.id %></td>
+              <td><%= cartItem.name %></td>
+              <td><%= cartItem.description %></td>
+              <td><%= cartItem.quantity %></td>
+              <td>
+                <form action="/remove-from-cart" method="post">
+                  <input type="hidden" name="cart_id" value="<%= cartItem.id %>">
+                  <button type="submit" class="btn btn-danger">Remove</button>
+                </form>
+              </td>
+            </tr>
+          <% }) %>
+        </tbody>
       </table>
+      <form action="/checkout" method="post">
+        <button type="submit" class="btn btn-primary">Checkout</button>
+      </form>
     <% } else { %>
-      <p class="text-center">Keranjang kosong</p>
+      <p class="mt-4">Keranjang kosong</p>
     <% } %>
   </div>
 

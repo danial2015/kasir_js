@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Website Kasir Donat Modern - Cetak Struk</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .struk-container {
+      max-width: 400px;
+      margin: 0 auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    .struk-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .struk-order-info {
+      margin-bottom: 10px;
+    }
+
+    .struk-items-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .struk-items-table th,
+    .struk-items-table td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    .struk-items-table th {
+      background-color: #f2f2f2;
+    }
+
+    .struk-total {
+      text-align: right;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .print-button {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="struk-container">
+    <div class="struk-header">
+      <h2>Kasir Donat Modern</h2>
+      <p>Jl. Contoh Alamat, Kota</p>
+      <p>Telp: 1234567890</p>
+    </div>
+    <div class="struk-order-info">
+      <p><strong>No. Pesanan:</strong> <%= order.id %></p>
+      <p><strong>Tanggal Pemesanan:</strong> <%= order.order_date.toISOString().split('T')[0] %></p>
+    </div>
+    <table class="struk-items-table">
+      <thead>
+        <tr>
+          <th>Nama Donat</th>
+          <th>Jumlah</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= order.menu_name %></td>
+          <td><%= order.quantity %></td>
+          <td>Rp <%= order.total %></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="struk-total">
+      <p><strong>Total:</strong> Rp <%= order.total %></p>
+    </div>
+    <div class="print-button">
+      <button onclick="window.print()">Cetak</button>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
